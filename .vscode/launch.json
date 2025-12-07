@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug btop (lldb)",
+            "name": "Debug btop (cppdbg - MI)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/btop",
@@ -22,7 +22,7 @@
             ]
         },
         {
-            "name": "Debug btop_test (lldb)",
+            "name": "Debug btop_test (cppdbg - MI)",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/build/tests/btop_test",
@@ -33,12 +33,38 @@
             "stopAtEntry": false,
             "MIMode": "lldb",
             "miDebuggerPath": "/usr/bin/lldb"
+        },
+        {
+            "name": "Debug btop (CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/btop",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "cmake: build",
+            "stopOnEntry": false,
+            "terminal": "integrated",
+            "sourceLanguages": ["c", "cpp"]
+        },
+        {
+            "name": "Debug btop_test (CodeLLDB)",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/tests/btop_test",
+            "args": ["--gtest_filter=*"],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "cmake: build",
+            "stopOnEntry": false,
+            "terminal": "integrated",
+            "sourceLanguages": ["c", "cpp"]
         }
     ],
     "compounds": [
         {
-            "name": "Build and Debug btop",
-            "configurations": ["Debug btop (lldb)"]
+            "name": "Build and Debug btop (CodeLLDB)",
+            "configurations": ["Debug btop (CodeLLDB)"]
         }
     ]
 }
+
+
