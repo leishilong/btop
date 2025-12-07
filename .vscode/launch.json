@@ -1,0 +1,44 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug btop (lldb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/btop",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "preLaunchTask": "cmake: build",
+            "stopAtEntry": false,
+            "MIMode": "lldb",
+            "miDebuggerPath": "/usr/bin/lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable LLDB settings",
+                    "text": "settings set target.max-args 256",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+        {
+            "name": "Debug btop_test (lldb)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/tests/btop_test",
+            "args": ["--gtest_filter=*"],
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "preLaunchTask": "cmake: build",
+            "stopAtEntry": false,
+            "MIMode": "lldb",
+            "miDebuggerPath": "/usr/bin/lldb"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Build and Debug btop",
+            "configurations": ["Debug btop (lldb)"]
+        }
+    ]
+}
